@@ -73,7 +73,7 @@ export class ChatRequestForm extends Component {
         <label className="metro-label">Email</label>
         <input className="metro-input" onChange={ev => this.handleEmailChange(ev.target.value)} value={this.state.email} type="email" name="email" />
         <label className="metro-label">Phone</label>
-        <input className="metro-input" onChange={ev => this.handlePhoneChange(ev.target.value)} value={this.state.phone} type="tele" name="phone" />
+        <input className="metro-input" onChange={ev => this.handlePhoneChange(ev.target.value)} value={this.state.phone} type="tel" name="phone" />
         <label className="metro-label">Request Type</label>
         <CaseType change={this.handleCaseTypeChange} value={this.state.caseType} />
         <label className="metro-label">Your Specific need</label>
