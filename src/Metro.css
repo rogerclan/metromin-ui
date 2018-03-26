@@ -1,0 +1,182 @@
+/* orange: #EC7538
+   darkblue: #225575
+   grey: 90aaba
+   lightblue: #1F91C6
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,Geneva,sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.container {
+  width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.metro-title {
+  color: #EC7538;
+  font-family: "Permanent Marker", serif;
+  font-size: 3rem;
+}
+
+.metro-header {
+  height: 150px;
+  position: relative;
+}
+
+.metro-header__logolink {
+  position: absolute;
+  display: block;
+  height: 120px;
+  width: 120px;
+  top: 15px;
+  left: 0;
+}
+
+.metro-header__logo {
+  height: 120px;
+  width: 120px;
+}
+
+.navbar {
+  list-style: none;
+  padding-top: 100px;
+  text-align: right;
+  position: relative;
+  padding-right: 10%;
+  color: #1F91C6;
+}
+
+.navbar__links {
+  display: inline-block;
+  padding: 5px 15px;
+  font-family: Arvo,serif;
+}
+
+.navbar__links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar__links a:hover {
+  text-decoration: #1F91C6 underline;
+}
+
+.metro-hero {
+  position: relative;
+  height: calc(100vh - 150px);
+  background-color: #225575;
+  box-sizing: border-box;
+  padding-top: 40vh;
+}
+
+.metro-hero__title {
+  color: white;
+  text-align: center;
+  font-family: "Permanent Marker", serif;
+  font-size: 3rem;
+}
+
+.metro-help {
+  height: 100vh;
+  position: absolute;
+}
+
+.metro-question {
+  position: relative;
+  height: calc(100vh - 150px);
+  text-align: center;
+}
+
+.metro-question__title {
+  color: #EC7538;
+  font-family: "Permanent Marker", serif;
+  padding-top: 30vh;
+  font-size: 3rem;
+}
+
+.metro-btn-bar {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.metro-btn {
+  color: #2b2b2b;
+  text-decoration: none;
+  border: 1px solid #2b2b2b;
+  padding: 5px 15px;
+  font-size: 1.6rem;
+  border-radius: 3px;
+}
+
+.metro-chat-form__view {
+  padding: 3rem 0;
+}
+
+.metro-label{
+  display: block;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  margin: 1.2rem 0;
+}
+
+.metro-input, .metro-textarea, .metro-select{
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.metro-vol-need__form .metro-input,
+.metro-vol-need__form .metro-textarea,
+.metro-vol-need__form .metro-select {
+  width: 50%;
+  font-size: 1.6rem;
+}
+
+.metro-chat__title {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.metro-chat__btn {
+  color: #EC7538;
+  border-color: #EC7538;
+}
+
+.metro-chat__btn:hover {
+  color: white;
+  background-color: #EC7538;
+  border-color: #EC7538;
+}
+
+.metro-vol-container {
+  margin-left: 375px;
+}
+
+.metro-vol-request-list {
+  height: calc(100vh - 150px);
+  width: 350px;
+  position: fixed;
+  top: 150px;
+  left: 0;
+}
+
+.metro-vol-chat {
+  padding: 1rem 1rem 3rem;
+}
+
+.metro-vol-need-form {
+  padding: 1rem 1rem 3rem;
+}
