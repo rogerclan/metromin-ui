@@ -4,9 +4,9 @@ function getCaseMessages(id) {
   return fetch(`${BASEURL}case/${id}/message`).then(res => res.json());
 }
 
-function sendMessage(data) {
+function sendMessage(caseId, metminUserId, content) {
   return fetch(`${BASEURL}message`, {
-      body: JSON.stringify(data),
+      body: JSON.stringify({caseId, metminUserId, content}),
       cache: 'no-cache',
       method: 'POST'
   }).then(res => res.json());
@@ -40,11 +40,11 @@ function getCompletedCampaigns () {
   return fetch(`${BASEURL}campaign/complete`).then(res => res.json());
 }
 
-function addCampaign(data) {
+function addCampaign(caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag) {
   return fetch(`${BASEURL}campaign`, {
     method: 'POST',
     cache: 'no-cache',
-    body: JSON.stringify(data)
+    body: JSON.stringify({caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag})
   }).then(res => res.json());
 }
 
@@ -52,11 +52,11 @@ function getContributions () {
   return fetch(`${BASEURL}contribution`).then(res => res.json());
 }
 
-function addContribution (data) {
+function addContribution (campaignId, contactName, amount) {
   return fetch(`${BASEURL}contribution`, {
     method: 'POST',
     cache: 'no-cache',
-    body: JSON.stringify(data)
+    body: JSON.stringify({campaignId, contactName, amount})
   }).then(res => res.json());
 }
 
@@ -76,11 +76,11 @@ function addCase(data) {
   }).then(res => res.json());
 }
 
-function updateCase(id, data) {
+function updateCase(id, caseType, contactName, reviewed, contactEmail, contactPhone, location, message) {
   return fetch(`${BASEURL}case/${id}`,{
     method: 'PATCH',
     cache: 'no-cache',
-    body: JSON.stringify(data),
+    body: JSON.stringify({caseType, contactName, reviewed, contactEmail, contactPhone, location, message}),
   }).then(res => res.json());
 }
 
