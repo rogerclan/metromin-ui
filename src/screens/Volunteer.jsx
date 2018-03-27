@@ -19,7 +19,7 @@ export class Voulenteer extends Component {
         </section>
         <div className="metro-vol-container">
           <section className="metro-vol-chat">
-            <h3>Requests</h3>
+            <h3>Chats</h3>
             <ul>
               <li>
                 No current chats
