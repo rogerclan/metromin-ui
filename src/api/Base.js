@@ -1,1 +1,0 @@
-export const BASEURL = "http://metmin.us-east-1.elasticbeanstalk.com/api/";
