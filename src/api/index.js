@@ -1,16 +1,13 @@
 const BASEURL = "http://metmin.us-east-1.elasticbeanstalk.com/api/";
 
-function getMessage(id) {
+function getCaseMessages(id) {
   return fetch(`${BASEURL}case/${id}/message`).then(res => res.json());
 }
 
-function addMessage(message) {
+function sendMessage(data) {
   return fetch(`${BASEURL}message`, {
-      body: JSON.stringify(message),
+      body: JSON.stringify(data),
       cache: 'no-cache',
-      headers: {
-          'content-type': 'application/json'
-      },
       method: 'POST'
   }).then(res => res.json());
 }
@@ -19,9 +16,6 @@ function login (id) {
   return fetch(`${BASEURL}user/${id}`, {
       body: JSON.stringify({loggedIn: true}),
       cache: 'no-cache',
-      headers: {
-          'content-type': 'application/json'
-      },
       method: 'PATCH'
   }).then(res => res.json());
 }
@@ -30,48 +24,54 @@ function logout (id) {
   return fetch(`${BASEURL}user/${id}`, {
       body: JSON.stringify({loggedIn: false}),
       cache: 'no-cache',
-      headers: {
-          'content-type': 'application/json'
-      },
       method: 'PATCH'
   }).then(res => res.json());
 }
 
 function getCampaigns () {
-
+  return fetch(`${BASEURL}campaign`).then(res => res.json());
 }
 
 function getActiveCampaigns () {
-
+  return fetch(`${BASEURL}campaign/active`).then(res => res.json());
 }
 
 function getCompletedCampaigns () {
-
+  return fetch(`${BASEURL}campaign/complete`).then(res => res.json());
 }
 
-function addCampaign(campaign) {
-
+function addCampaign(data) {
+  return fetch(`${BASEURL}campaign`, {
+    method: 'POST',
+    cache: 'no-cache',
+    body: JSON.stringify(data)
+  }).then(res => res.json());
 }
 
 function getContributions () {
-
+  return fetch(`${BASEURL}contribution`).then(res => res.json());
 }
 
-function addContribution (contribution) {
-
+function addContribution (data) {
+  return fetch(`${BASEURL}contribution`, {
+    method: 'POST',
+    cache: 'no-cache',
+    body: JSON.stringify(data)
+  }).then(res => res.json());
 }
 
 function getUsers () {
   return fetch(`${BASEURL}user`).then(res => res.json());
 }
 
-function getCase() {
+function getCases() {
   return fetch(`${BASEURL}case`).then(res => res.json());
 }
 
 function addCase(data) {
   return fetch(`${BASEURL}case`, {
     method: 'POST',
+    cache: 'no-cache',
     body: JSON.stringify(data)
   }).then(res => res.json());
 }
@@ -79,13 +79,24 @@ function addCase(data) {
 function updateCase(id, data) {
   return fetch(`${BASEURL}case/${id}`,{
     method: 'PATCH',
+    cache: 'no-cache',
     body: JSON.stringify(data),
   }).then(res => res.json());
 }
 
 export default {
-  getMessage,
-  addMessage,
+  getCaseMessages,
+  sendMessage,
   login,
-  logout
+  logout,
+  getCampaigns,
+  getActiveCampaigns,
+  getCompletedCampaigns,
+  addCampaign,
+  getContributions,
+  addContribution,
+  getUsers,
+  getCases,
+  addCase,
+  updateCase
 };
