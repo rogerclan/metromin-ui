@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   border: none;
+  outline: none;
 }
 
 html, body {
@@ -156,17 +157,27 @@ ul {
 
 .metro-vol-need__form {
   margin-left: 25%;
-}
-
-.metro-vol-need__form .metro-label {
   width: 50%;
+  margin-bottom: 50px;
 }
 
 .metro-vol-need__form .metro-input,
 .metro-vol-need__form .metro-textarea,
 .metro-vol-need__form .metro-select {
-  width: 50%;
   font-size: 1.4rem;
+}
+
+.metro-vol-need__btn {
+  width: 180px;
+  background-color: #225575;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  color: white;
+  box-shadow: 0 3px 6px rgba(5, 5, 5, 0.5);
+}
+
+.metro-vol-need__btn:hover {
+  cursor: pointer;
 }
 
 .metro-chat__title {
@@ -312,13 +323,49 @@ ul {
   margin-top: 1rem;
 }
 
-.metro-vol-request-list {
-  border-right: 2px solid #225575;
+.metro-requests-list {
+  overflow-y: auto;
+  max-height: 100%;
 }
 
-.metro-requests-list {
-  overflow: auto;
-  max-height: 100%;
+.metro-request-item {
+  position: relative;
+  padding: 15px 10px;
+  border-bottom: 1px dotted #225575;
+}
+
+.metro-request-item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 50px;
+}
+
+.metro-request-item-header {
+  font-size: 1rem;
+  color: #225575;
+}
+
+.metro-request-item-subheader {
+  font-size: 0.7rem;
+  color: #a3a3a3;
+}
+
+.metro-request-item-msg {
+  font-size: 0.8rem;
+  color: #2b2b2b;
+  padding-top: 5px;
+}
+
+.metro-request-item-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  background-color: rgb(11, 192, 4);
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 1rem;
+  border-radius: 100px;
+  box-shadow: 0 2px 3px rgba(5, 5, 5, 0.3);
 }
 
 .metro-chat-input {

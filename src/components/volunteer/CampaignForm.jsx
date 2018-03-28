@@ -59,7 +59,7 @@ export default class CampaignForm extends Component{
         <CampaignTypes change={this.handleCampaignTypeChange} value={this.state.campaignType}/>
         <label className="metro-label">Amount</label>
         <input className="metro-input" type="number" onChange={ev => this.handleFundsNeededChange(ev.target.value)} value={this.state.fundNeeded}/>
-        <div className="metro-btn-bar"><button className="" onClick={ev => this.handleSubmitCampaign(ev)}>Submit</button></div>
+        <div className="metro-btn-bar"><button className="metro-vol-need__btn" onClick={ev => this.handleSubmitCampaign(ev)}>Submit</button></div>
       </form>
     )
   }
