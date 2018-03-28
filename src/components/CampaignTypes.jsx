@@ -3,8 +3,8 @@ import CampaignTypes from '../models/CampaignTypes';
 
 export function CampaignType(props) {
   let options = () => {
-    return CampaignTypes.map(campaignType => (
-      <option value={campaignType}>campaignType</option>
+    return CampaignTypes.map((campaignType, i) => (
+      <option key={i} value={campaignType}>campaignType</option>
     ))
   }
 

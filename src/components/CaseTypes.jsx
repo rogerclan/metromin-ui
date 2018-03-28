@@ -1,10 +1,10 @@
 import React from 'react';
-import CaseTypes from '../models/CaseTypes';
+import model from '../models/CaseTypes';
 
-export function CaseType(props) {
+export function CaseTypes(props) {
   let options = () => {
-    return CaseTypes.map(caseType => (
-      <option value={caseType}>caseType</option>
+    return model.map((caseType, i) => (
+      <option key={i} value={caseType}>{caseType}</option>
     ))
   }
 
@@ -15,4 +15,4 @@ export function CaseType(props) {
   )
 }
 
-export default CaseType;
+export default CaseTypes;

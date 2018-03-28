@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { CaseType } from './CaseTypes';
+import CaseTypes from './CaseTypes';
+import Api from '../api';
+import Case from '../models/Case';
 
 export class ChatRequestForm extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ export class ChatRequestForm extends Component {
       email: '',
       phone: '',
       need: '',
-      caseType: 'financial assistance'
+      caseType: '',
+      location: ''
     }
 
     this.handleStartChat = this.handleStartChat.bind(this);
@@ -18,30 +21,18 @@ export class ChatRequestForm extends Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePhoneChange = this.handlePhoneChange.bind(this);
     this.handleNeedChange = this.handleNeedChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleCaseTypeChange = this.handleCaseTypeChange.bind(this);
   }
 
   handleStartChat(ev) {
     ev.preventDefault();
     if (this.state.name && this.state.need) {
-      const { name, email, phone, need, caseType } = this.state;
-      const data = {
-        contactName:name,
-        contactEmail: email,
-        contactPhone: phone,
-        message: need,
-        caseType,
-        reviewed: false };
-      fetch('http://metmin.us-east-1.elasticbeanstalk.com/api/case', {
-        body: JSON.stringify(data),
-        cache: 'no-cache',
-        headers: {
-          'content-type': 'application/json'
-        },
-        method: 'POST'
-      })
-      .then(response => response.json())
-      .then(data => console.log(data));
+      const { name, email, phone, need, caseType, location } = this.state;
+      Api.addCase(caseType, name, email, phone, location, need)
+      .then(data => {
+        this.props.startChat(new Case(data.id, data.caseType, data.assignee, data.contactName, data.contactEmail, data.contactPhone, data.location, data.message, data.dateCreated))
+      });
     }
   }
 
@@ -65,6 +56,10 @@ export class ChatRequestForm extends Component {
     this.setState({ need });
   }
 
+  handleLocationChange(location) {
+    this.setState({ location });
+  }
+
   render() {
     return (
       <form className="metro-chat-form">
@@ -74,8 +69,10 @@ export class ChatRequestForm extends Component {
         <input className="metro-input" onChange={ev => this.handleEmailChange(ev.target.value)} value={this.state.email} type="email" name="email" />
         <label className="metro-label">Phone</label>
         <input className="metro-input" onChange={ev => this.handlePhoneChange(ev.target.value)} value={this.state.phone} type="tel" name="phone" />
+        <label className="metro-label">Location</label>
+        <input className="metro-input" onChange={ev => this.handleLocationChange(ev.target.value)} value={this.state.location} type="text" name="location" />
         <label className="metro-label">Request Type</label>
-        <CaseType change={this.handleCaseTypeChange} value={this.state.caseType} />
+        <CaseTypes change={this.handleCaseTypeChange} value={this.state.caseType} />
         <label className="metro-label">Your Specific need</label>
         <textarea className="metro-textarea" onChange={ev => this.handleNeedChange(ev.target.value)} value={this.state.need} rows="8" name="needs" required></textarea>
         <div className="metro-btn-bar">
