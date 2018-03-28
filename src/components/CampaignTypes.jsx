@@ -1,10 +1,10 @@
 import React from 'react';
-import CaseTypes from '../models/CaseTypes';
+import CampaignTypes from '../models/CampaignTypes';
 
-export function CaseType(props) {
+export function CampaignType(props) {
   let options = () => {
-    return CaseTypes.map(caseType => (
-      <option value={caseType}>caseType</option>
+    return CampaignTypes.map(campaignType => (
+      <option value={campaignType}>campaignType</option>
     ))
   }
 

@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { RequestItem } from './RequestItem';
 
-export function RequestList (props) {
+export class RequestList extends Component {
 
-  const listItems = () => {
-    if(props.requests.length > 0) {
-      return this.props.requests.map(item => (
-        <RequestItem item={item} key={item.id} />
+  constuctor(props) {
+    super(props);
+    this.state = {
+      requests = []
+    }
+
+    this.handleSelectClick = this.handleSelectClick.bind(this);
+  }
+
+  handleSelectClick(item) {
+    this.props.selectCase
+  }
+
+  requestItems = () => {
+    if(this.state.requests.length > 0) {
+      return this.state.requests.map(item => (
+        <RequestItem item={item} selectClick={this.handleSelectClick} key={item.id} />
       ))
     }
-    return <li>No requests pending</li>
+    return <li className="metro-requests-list-item-empty">No requests pending</li>
   }
 
   return (
