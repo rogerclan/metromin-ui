@@ -48,7 +48,6 @@ export class Voulenteer extends Component {
         </section>
         <div className="metro-vol-container">
           <section className="metro-vol-chat">
-            <h3>Chats</h3>
             <ChatGrid chats={this.state.chats} startCampaign={this.handleStartCampaign} user={this.state.user} closeChat={this.handleCloseChat} />
           </section>
           {this.state.userCase && <section className="metro-vol-need">

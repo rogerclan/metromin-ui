@@ -7,12 +7,15 @@
 * {
   margin: 0;
   padding: 0;
+  border: none;
 }
 
 html, body {
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,Geneva,sans-serif;
   font-weight: 300;
   font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
@@ -130,16 +133,33 @@ ul {
   display: block;
   font-size: 1.4rem;
   line-height: 1.8rem;
-  margin: 1rem 0;
+  margin: 1rem 5%;
+  width: 90%;
 }
 
 .metro-select {
   text-transform: capitalize;
 }
 
-.metro-input, .metro-textarea, .metro-select{
-  width: 100%;
+.metro-input, .metro-textarea, .metro-select {
+  width: 90%;
+  margin-left: 5%;
   font-size: 1.2rem;
+  border: 1px solid #1F91C6;
+  padding: 2px 10px;
+}
+
+.metro-input:focus, .metro-textarea:focus, .metro-select:focus {
+  border-color: #225575;
+  outline: none;
+}
+
+.metro-vol-need__form {
+  margin-left: 25%;
+}
+
+.metro-vol-need__form .metro-label {
+  width: 50%;
 }
 
 .metro-vol-need__form .metro-input,
@@ -178,7 +198,51 @@ ul {
 }
 
 .metro-vol-chat {
-  padding: 1rem 1rem 3rem;
+  padding: 2rem 3rem;
+}
+
+.metro-vol-chat-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.metro-vol-chat-grid .metro-chat-box {
+  margin-right: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metro-chat-msg {
+ color: #225575;
+ width: 80%;
+ padding: 10px 5px;
+ margin: 10px;
+ border: 1px solid #225575;
+ border-radius: 3px;
+}
+
+.metro-chat-msg h3 {
+  display: inline-block;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  border-bottom: 1px solid #225575;
+  padding: 0 3px;
+  margin-bottom: .5rem;
+}
+
+.metro-chat-msg-customer h3 {
+  border-bottom-color: white;
+}
+
+.metro-chat-msg p {
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+.metro-chat-msg-customer {
+  margin-left: 13%;
+  color: white;
+  background-color: #EC7538;
+  border-color: #EC7538;
 }
 
 .metro-vol-need-form {
@@ -187,7 +251,24 @@ ul {
 
 .metro-chat-box {
   width: 400px;
-  border: 2px solid #1F91C6;
+  border: 5px solid #1F91C6;
+  position: relative;
+  border-radius: 3px;
+}
+
+.metro-chat-box-close-btn {
+  position: absolute;
+  padding: 5px;
+  background-color: #EC7538;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  border-radius: 100px;
+  height: 1.4rem;
+  width: 1.4rem;
+  box-sizing: content-box;
+  top: -20px;
+  right: -20px;
 }
 
 .metro-help-chat {
@@ -206,6 +287,7 @@ ul {
   padding: 5px 10px;
   font-size: 1.2rem;
   text-align: center;
+  position: relative;
 }
 
 .metro-chat-header-img {
@@ -213,11 +295,21 @@ ul {
   width: 50px;
   display: inline-block;
   margin-right: 25px;
+  position: absolute;
+  top: -7px;;
+  left: 10px;
 }
 
 .metro-chat-list {
   height: 400px;
   overflow: auto;
+  margin: 5px;;
+}
+
+.metro-chat-wait {
+  color: #225575;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .metro-vol-request-list {
@@ -228,3 +320,57 @@ ul {
   overflow: auto;
   max-height: 100%;
 }
+
+.metro-chat-input {
+  border-top: 1px solid #1F91C6;
+  border-bottom: 1px solid #1F91C6;
+  height: 2.5rem;
+}
+
+.metro-chat-input input, .metro-chat-input button {
+  border: none;
+  display: inline-block;
+  height: 100%;
+  line-height: 1.2rem;
+}
+
+.metro-chat-input input {
+  width: 305px;
+  font-size: 0.8rem;
+  background-color: transparent;
+  padding: 0 10px;
+}
+
+.metro-chat-input input:focus {
+  outline: none;
+}
+
+.metro-chat-input button {
+  width: 75px;
+  background-color: #EC7538;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.metro-chat-campaign {
+  padding: 5px 5px 20px;;
+}
+
+.metro-chat-campaign-btn {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  margin-left: -80px;
+  width: 180px;
+  background-color: #225575;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  color: white;
+  box-shadow: 0 3px 6px rgba(5, 5, 5, 0.5);
+}
+
+.metro-chat-campaign-btn:hover {
+  cursor: pointer;
+}
+

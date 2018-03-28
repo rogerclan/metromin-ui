@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Logo from "../../logo.png";
+import AltLogo from "../../logo_alt.png";
 import ChatInput from "./Input";
 import ChatList from "./List";
 import ChatCampaignBtn from "./CampaignBtn";
@@ -85,9 +85,9 @@ export default class ChatBox extends Component {
 
     return (
       <article className="metro-chat-box">
-        <button className="metro-chat-box-close-btn" onClick={ev => this.handleCloseChat()}>X</button>
+        <button className="metro-chat-box-close-btn" onClick={ev => this.handleCloseChat()}><i className="fa fa-times"></i></button>
         <div className="metro-chat-header">
-          <img className="metro-chat-header-img" src={Logo} alt="metro min logo"/> We Can Help
+          <img className="metro-chat-header-img" src={AltLogo} alt="metro min logo"/> We Can Help
         </div>
         <ChatList userCase={this.props.userCase} messages={this.state.messages} />
         <ChatInput
@@ -95,7 +95,7 @@ export default class ChatBox extends Component {
           change={this.handleInputChange}
           sendMessage={this.handleSendMessage}
         />
-        {this.props.user && <ChatCampaignBtn startCampaign={this.handleStartCampaign} />}
+        {this.props.user && <ChatCampaignBtn userCase={this.props.userCase} startCampaign={this.handleStartCampaign} />}
       </article>
     );
   }

@@ -36,9 +36,9 @@ export class RequestList extends Component {
 
   handleSelectClick(item) {
     const props = this.props;
-    Api.updateCase(item.id, this.props.user.id).then(() => {
+    //Api.updateCase(item.id, this.props.user.id).then(() => {
       props.selectCase(item);
-    });
+    //});
   }
 
   requestItems = () => {
