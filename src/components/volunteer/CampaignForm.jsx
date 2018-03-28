@@ -25,7 +25,7 @@ export default class CampaignForm extends Component{
     this.setState({title})
   }
 
-  handleDescritionChange(description) {
+  handleDescriptionChange(description) {
     this.setState({description})
   }
 
@@ -41,10 +41,8 @@ export default class CampaignForm extends Component{
     const me = this;
     const { caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag } = this.state;
     ev.preventDefault();
-    Api.addCampaign(caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag).then(res => {
-      if (res.ok) {
-        me.props.closeForm();
-      }
+    Api.addCampaign(caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag).then(() => {
+      me.props.closeForm();
     }).catch(err => {
       console.dir(err);
     });

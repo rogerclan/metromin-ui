@@ -16,6 +16,7 @@ export class Voulenteer extends Component {
     this.handleCloseForm = this.handleCloseForm.bind(this);
     this.handleSelectCase = this.handleSelectCase.bind(this);
     this.handleCloseChat = this.handleCloseChat.bind(this);
+    this.handleStartCampaign = this.handleStartCampaign.bind(this);
   }
 
   handleCloseForm() {
@@ -33,13 +34,17 @@ export class Voulenteer extends Component {
     this.setState({chats});
   }
 
+  handleStartCampaign (userCase) {
+    this.setState({userCase});
+  }
+
   render() {
 
     return (
       <div>
         <section className="metro-vol-request-list">
           <h3>Requests</h3>
-          <RequestList selectCase={this.handleSelectCase}/>
+          <RequestList user={this.state.user} selectCase={this.handleSelectCase}/>
         </section>
         <div className="metro-vol-container">
           <section className="metro-vol-chat">

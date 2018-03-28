@@ -54,20 +54,22 @@ export default class ChatBox extends Component {
   }
 
   handleStartCampaign () {
-    this.props.startCampain(this.props.userCase);
+    this.props.startCampaign(this.props.userCase);
   }
 
   handleSendMessage(ev) {
     ev.preventDefault();
-    const me = this;
     const { message } = this.state;
-    this.setState({message:''});
-    this.sendMessage(message).then(() => {
-      me.getMessages();
-    })
-    .catch(() => {
-      console.log('failed to send message')
-    });
+    if (message.length > 0) {
+      this.setState({message:''});
+      const me = this;
+      this.sendMessage(message).then(() => {
+        me.getMessages();
+      })
+      .catch(() => {
+        console.log('failed to send message')
+      });
+    }
 
   }
 

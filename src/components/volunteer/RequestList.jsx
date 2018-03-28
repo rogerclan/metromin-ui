@@ -28,14 +28,17 @@ export class RequestList extends Component {
 
   getUserCases() {
     const me = this;
-    Api.getCases().then(res => {
+    Api.getNewCases().then(res => {
       me.setState({requests: res.content});
     })
   }
 
 
   handleSelectClick(item) {
-    this.props.selectCase(item);
+    const props = this.props;
+    Api.updateCase(item.id, this.props.user.id).then(() => {
+      props.selectCase(item);
+    });
   }
 
   requestItems = () => {

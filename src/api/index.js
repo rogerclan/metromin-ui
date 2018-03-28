@@ -85,6 +85,10 @@ function getUsers() {
   return fetch(`${BASEURL}user`).then(res => res.json());
 }
 
+function getNewCases() {
+  return fetch(`${BASEURL}case/new?sort=dateCreated,desc`).then(res => res.json());
+}
+
 function getCases() {
   return fetch(`${BASEURL}case?sort=dateCreated,desc`).then(res => res.json());
 }
@@ -117,6 +121,7 @@ function updateCase(id, assigneeId) {
   return fetch(`${BASEURL}case/${id}`, {
     method: "PATCH",
     cache: "no-cache",
+    mode: 'cors',
     body: JSON.stringify({ assigneeId }),
     headers
   }).then(res => res.json());
@@ -135,6 +140,7 @@ export default {
   addContribution,
   getUsers,
   getCases,
+  getNewCases,
   addCase,
   updateCase
 };
