@@ -5,8 +5,23 @@ export class Voulenteer extends Component {
   constructor(props) {
     super(props)
     this.state={
-      requests:[]
+      user: new User(3, 'Felicia', 'Felicia White', true),
+      userCase: null,
+      chats: []
     }
+
+    this.handleCloseForm = this.handleCloseForm.bind(this);
+    this.handleSelectCase = this.handleSelectCase.bind(this);
+  }
+
+  handleCloseForm() {
+    this.setState({userCase: null});
+  }
+
+  handleSelectCase(userCase) {
+    const {chats} = this.state;
+
+    this.setState({chats});
   }
 
   render() {
@@ -15,34 +30,16 @@ export class Voulenteer extends Component {
       <div>
         <section className="metro-vol-request-list">
           <h3>Requests</h3>
-          <RequestList requests={this.state.requests}/>
+          <RequestList selectCase={this.handleSelectCase}/>
         </section>
         <div className="metro-vol-container">
           <section className="metro-vol-chat">
             <h3>Chats</h3>
-            <ul>
-              <li>
-                No current chats
-              </li>
-            </ul>
+            <ChatGrid chats={this.state.chats} startCampaign={this.handleStartCampaign} user={this.state.user}/>
           </section>
-          <section className="metro-vol-need">
-            <form className="metro-vol-need__form">
-              <label className="metro-label">Title</label>
-              <input className="metro-input" type="text" />
-              <label className="metro-label">Description</label>
-              <input className="metro-input" type="text" />
-              <label className="metro-label">Amount Requested</label>
-              <input className="metro-input" type="number" />
-              <label className="metro-label">Request Type</label>
-              <select className="metro-select">
-                <option>Financial</option>
-              </select>
-              <div className="metro-btn-bar">
-                <button className="metro-btn">Create Need</button>
-              </div>
-            </form>
-          </section>
+          {this.state.userCase && <section className="metro-vol-need">
+            <CampaignForm userCase={this.state.userCase} closeForm={this.handleCloseForm}/>
+          </section>}
         </div>
       </div>
     );

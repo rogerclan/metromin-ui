@@ -13,7 +13,7 @@ export class RequestList extends Component {
   }
 
   handleSelectClick(item) {
-    this.props.selectCase
+    this.props.selectCase(item);
   }
 
   requestItems = () => {

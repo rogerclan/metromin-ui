@@ -13,6 +13,10 @@ export default class ChatBox {
       messages: [],
       poll: null
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleStartCampaign = this.handleStartCampaign.bind(this);
+    this.handleSendMessage = this.handleInputChange.bind(this);
   }
 
   componentWillMount() {
@@ -38,6 +42,10 @@ export default class ChatBox {
         me.setState({ messages: res.data.content });
       }
     });
+  }
+
+  handleStartCampaign () {
+    this.props.startCampain(this.props.userCase);
   }
 
   handleSendMessage(ev) {
@@ -66,6 +74,7 @@ export default class ChatBox {
           change={this.handleInputChange}
           sendMessage={this.handleSendMessage}
         />
+        {this.props.user && <ChatCampaignBtn startCampaign={this.handleStartCampaign} />}
       </article className="metro-chat-box">
     );
   }
