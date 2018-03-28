@@ -3,10 +3,10 @@ import { RequestItem } from './RequestItem';
 
 export class RequestList extends Component {
 
-  constuctor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-      requests = []
+      requests: []
     }
 
     this.handleSelectClick = this.handleSelectClick.bind(this);
@@ -25,11 +25,13 @@ export class RequestList extends Component {
     return <li className="metro-requests-list-item-empty">No requests pending</li>
   }
 
-  return (
-    <ul>
-      { listItems() }
-    </ul>
-  )
+  render(){
+    return (
+      <ul>
+        { this.requestItems() }
+      </ul>
+    )
+  }
 }
 
 export default RequestList;

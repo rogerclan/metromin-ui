@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import Logo from "../../logo.png";
 import ChatInput from "./Input";
 import ChatList from "./List";
-import Case from "../../models/Case";
+import ChatCampaignBtn from "./CampaignBtn";
 import Api from "../../api";
 
-export default class ChatBox {
+export default class ChatBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,10 +63,11 @@ export default class ChatBox {
   }
 
   render() {
+
     return (
       <article className="metro-chat-box">
         <div className="metro-chat-header">
-          <img className="metro-chat-header-img" src={Logo}> We Can Help
+          <img className="metro-chat-header-img" src={Logo} alt="metro min logo"/> We Can Help
         </div>
         <ChatList userCase={this.props.userCase} messages={this.state.messages} />
         <ChatInput
@@ -75,7 +76,7 @@ export default class ChatBox {
           sendMessage={this.handleSendMessage}
         />
         {this.props.user && <ChatCampaignBtn startCampaign={this.handleStartCampaign} />}
-      </article className="metro-chat-box">
+      </article>
     );
   }
 }

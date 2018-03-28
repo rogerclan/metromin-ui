@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { RequestList } from '../components/volunteer/RequestList';
+import User from '../models/User';
+import ChatGrid from '../components/volunteer/ChatGrid';
+import CampaignForm from '../components/volunteer/CampaignForm';
 
 export class Voulenteer extends Component {
   constructor(props) {

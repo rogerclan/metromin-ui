@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import API from '../../api';
+import Api from '../../api';
+import CampaignTypes from '../CampaignTypes';
 
-export default class CampaignForm {
-  construct(props) {
+export default class CampaignForm extends Component{
+  constructor(props) {
     super(props);
     this.state = {
       caseId: props.userCase.id,
@@ -37,6 +38,7 @@ export default class CampaignForm {
   }
 
   handleSubmitCampaign(ev) {
+    const me = this;
     const { caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag } = this.state;
     ev.preventDefault();
     Api.addCampaign(caseId, title, description, campaignType, fundsNeeded, fundsReceived, publicFlag).then(res => {
@@ -56,7 +58,7 @@ export default class CampaignForm {
         <label className="metro-label">Description</label>
         <textarea className="metro-textarea" onChange={ev => this.handleDescriptionChange(ev.target.value)} value={this.state.description}/>
         <label className="metro-label">Type</label>
-        <CampaignType change={this.handleCampaignTypeChange} value={this.state.campaignType}/>
+        <CampaignTypes change={this.handleCampaignTypeChange} value={this.state.campaignType}/>
         <label className="metro-label">Amount</label>
         <input className="metro-input" type="number" onChange={ev => this.handleFundsNeededChange(ev.target.value)} value={this.state.fundNeeded}/>
         <div className="metro-btn-bar"><button className="" onClick={ev => this.handleSubmitCampaign(ev)}>Submit</button></div>

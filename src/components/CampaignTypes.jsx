@@ -15,4 +15,4 @@ export function CampaignType(props) {
   )
 }
 
-export default CaseType;
+export default CampaignType;

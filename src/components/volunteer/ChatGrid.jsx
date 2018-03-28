@@ -1,4 +1,5 @@
 import React from 'react';
+import ChatBox from '../chat/Box';
 
 const ChatGrid = (props) => {
   const chats = () => {
