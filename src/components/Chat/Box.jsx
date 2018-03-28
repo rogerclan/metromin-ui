@@ -4,6 +4,7 @@ import ChatInput from "./Input";
 import ChatList from "./List";
 import ChatCampaignBtn from "./CampaignBtn";
 import Api from "../../api";
+import Message from "../../models/Message";
 
 export default class ChatBox extends Component {
   constructor(props) {
@@ -11,12 +12,14 @@ export default class ChatBox extends Component {
     this.state = {
       message: "",
       messages: [],
+      userId: (props.user) ? props.user.id: null,
       poll: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStartCampaign = this.handleStartCampaign.bind(this);
-    this.handleSendMessage = this.handleInputChange.bind(this);
+    this.handleSendMessage = this.handleSendMessage.bind(this);
+    this.handleCloseChat = this.handleCloseChat.bind(this);
   }
 
   componentWillMount() {
@@ -24,11 +27,16 @@ export default class ChatBox extends Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.poll);
+    clearInterval(this.poll);
+    const name = (this.props.user !== null) ? this.props.user.name : this.props.userCase.contactName ;
+    this.sendMessage(`${name} has left the chat.`).then(()=>{
+      console.log('chat window unmounted')
+    })
   }
 
   startPolling() {
-    this.poll = setTimeout(() => this.getMessages(), 3000);
+    const poll = setInterval(() => this.getMessages(), 3000);
+    this.setState({poll});
   }
 
   handleInputChange(message) {
@@ -38,8 +46,9 @@ export default class ChatBox extends Component {
   getMessages() {
     const me = this;
     Api.getCaseMessages(this.props.userCase.id).then(res => {
-      if (res.ok) {
-        me.setState({ messages: res.data.content });
+      if (res) {
+        const messages = res.content.map(msg => new Message(msg.id, msg.caseId, msg.metminUser, msg.content, msg.dateCreated));
+        me.setState({ messages });
       }
     });
   }
@@ -49,23 +58,32 @@ export default class ChatBox extends Component {
   }
 
   handleSendMessage(ev) {
-    const me = this;
     ev.preventDefault();
-    const { message } = me.state;
-    Api.sendMessage(me.props.userCase.id, null, message)
-      .then(res => {
-        me.setState({ message: "" });
-        me.getMessages();
-      })
-      .catch(() => {
-        console.log('failed to send message')
-      });
+    const me = this;
+    const { message } = this.state;
+    this.setState({message:''});
+    this.sendMessage(message).then(() => {
+      me.getMessages();
+    })
+    .catch(() => {
+      console.log('failed to send message')
+    });
+
+  }
+
+  sendMessage(message) {
+    return Api.sendMessage(this.props.userCase.id, this.state.userId, message);
+  }
+
+  handleCloseChat() {
+    this.props.closeChat(this.props.userCase);
   }
 
   render() {
 
     return (
       <article className="metro-chat-box">
+        <button className="metro-chat-box-close-btn" onClick={ev => this.handleCloseChat()}>X</button>
         <div className="metro-chat-header">
           <img className="metro-chat-header-img" src={Logo} alt="metro min logo"/> We Can Help
         </div>

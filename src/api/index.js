@@ -86,7 +86,7 @@ function getUsers() {
 }
 
 function getCases() {
-  return fetch(`${BASEURL}case`).then(res => res.json());
+  return fetch(`${BASEURL}case?sort=dateCreated,desc`).then(res => res.json());
 }
 
 function addCase(

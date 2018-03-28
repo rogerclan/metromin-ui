@@ -219,3 +219,12 @@ ul {
   height: 400px;
   overflow: auto;
 }
+
+.metro-vol-request-list {
+  border-right: 2px solid #225575;
+}
+
+.metro-requests-list {
+  overflow: auto;
+  max-height: 100%;
+}

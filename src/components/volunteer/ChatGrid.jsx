@@ -5,7 +5,7 @@ const ChatGrid = (props) => {
   const chats = () => {
     if (props.chats.length > 0) {
       return props.chats.map(chat => (
-        <ChatBox userCase={props.userCase} startCampaign={props.startCampaign} user={props.user}/>
+        <ChatBox key={chat.id} userCase={chat} startCampaign={props.startCampaign} user={props.user} closeChat={props.closeChat}/>
       ))
     }
     return;

@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import { RequestItem } from './RequestItem';
+import Api from '../../api';
 
 export class RequestList extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      requests: []
+      requests: [],
+      polling: null
     }
 
     this.handleSelectClick = this.handleSelectClick.bind(this);
   }
+
+  componentWillMount() {
+    this.startPolling();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.poll);
+  }
+
+  startPolling() {
+    this.poll = setInterval(() => this.getUserCases(), 3000);
+  }
+
+  getUserCases() {
+    const me = this;
+    Api.getCases().then(res => {
+      me.setState({requests: res.content});
+    })
+  }
+
 
   handleSelectClick(item) {
     this.props.selectCase(item);
@@ -27,7 +49,7 @@ export class RequestList extends Component {
 
   render(){
     return (
-      <ul>
+      <ul className="metro-requests-list">
         { this.requestItems() }
       </ul>
     )
