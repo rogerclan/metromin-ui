@@ -462,6 +462,7 @@ button:hover {
   font-size: 2rem;
   color: rgba(43, 43, 43, 0.50);
   z-index: 999;
+  background-color: transparent;
 }
 
 .metro-need-list-right-btn:hover {
