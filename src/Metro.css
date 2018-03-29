@@ -24,6 +24,10 @@ ul {
   padding-left: 0;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .container {
   width: 1090px;
   margin-right: auto;
@@ -421,3 +425,76 @@ ul {
   cursor: pointer;
 }
 
+.metro-need-section {
+  min-height: 100vh;
+}
+
+.metro-need-title {
+  text-align: center;
+  color: #EC7538;
+  font-family: "Permanent Marker", serif;
+  padding: 4rem 0 2rem;
+  font-size: 3rem;
+}
+
+.metro-need-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.metro-need-list-title {
+  font-size: 1rem;
+  margin-left: 100px;
+  color: #1F91C6;
+}
+
+.metro-need-list {
+  overflow-x: hidden;
+  position: relative;
+  min-width: 10520px;
+}
+
+.metro-need-list-right-btn {
+  position: absolute;
+  right: 25px;
+  top: 60%;
+  font-size: 2rem;
+  color: rgba(43, 43, 43, 0.50);
+  z-index: 999;
+}
+
+.metro-need-list-right-btn:hover {
+  color: rgba(43, 43, 43, 0.90)
+}
+
+.metro-need-card {
+  display: inline-block;
+  height: 150px;
+  width: 300px;
+  margin: 0 50px 0 20px;
+  border: 2px solid #225575;
+  border-radius: 3px;
+}
+
+.metro-need-card-graph {
+  width: 100px;
+  height: 100%;
+  display: block;
+  float: left;
+  background-color: #225575;
+}
+
+.metro-need-card-info {
+  width: 200px;
+  height: 100%;
+  float: right;
+  display: block;
+}
+
+.metro-need-card-bar {
+  margin-left: 33px;
+  width: 34px;
+  background-color: white;
+  margin-top: 33px;
+  height: 117px;
+}

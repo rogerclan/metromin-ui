@@ -36,7 +36,7 @@ function getCampaigns() {
 }
 
 function getActiveCampaigns() {
-  return fetch(`${BASEURL}campaign/active`).then(res => res.json());
+  return fetch(`${BASEURL}campaign/active?sort=dateCreated,desc`).then(res => res.json());
 }
 
 function getCompletedCampaigns() {

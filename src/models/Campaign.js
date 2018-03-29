@@ -10,7 +10,7 @@ export default class Campaign {
     this.campaignType = campaignType || '';
     this.fundsNeeded = fundsNeeded || 0;
     this.fundsReceived = fundsReceived || 0;
-    this.publicFlag = pfalselicFlag || false;
+    this.publicFlag = publicFlag || false;
     this.dateCreated = dateCreated? moment(dateCreated): null;
   }
 }

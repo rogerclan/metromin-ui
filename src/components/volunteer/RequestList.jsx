@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { RequestItem } from './RequestItem';
+import Case from '../../models/Case';
 import Api from '../../api';
 
 export class RequestList extends Component {
@@ -29,16 +30,17 @@ export class RequestList extends Component {
   getUserCases() {
     const me = this;
     Api.getNewCases().then(res => {
-      me.setState({requests: res.content});
+      const requests = res.content.map(r => new Case(r.id, r.caseType, r.assignee, r.contactName, r.contactEmail, r.contactPhone, r.location, r.message, r.dateCreated));
+      me.setState({requests});
     })
   }
 
 
   handleSelectClick(item) {
     const props = this.props;
-    //Api.updateCase(item.id, this.props.user.id).then(() => {
+    Api.updateCase(item.id, this.props.user.id).then(() => {
       props.selectCase(item);
-    //});
+    });
   }
 
   requestItems = () => {
