@@ -4,7 +4,7 @@ import NeedCard from './Card';
 const NeedsList = (props) => {
   const needs = () => {
     if (props.needs.length > 0) {
-      return props.needs.map(n => <NeedCard key={n.id} need={n} selectNeed={props.slectNeed} />);
+      return props.needs.map(n => <NeedCard key={n.id} need={n} selectNeed={props.selectNeed} />);
     }
     return;
   }

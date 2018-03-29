@@ -445,6 +445,7 @@ button:hover {
 .metro-need-list-title {
   font-size: 1rem;
   margin-left: 100px;
+  margin-bottom: 15px;
   color: #1F91C6;
 }
 
@@ -457,7 +458,7 @@ button:hover {
 .metro-need-list-right-btn {
   position: absolute;
   right: 25px;
-  top: 60%;
+  top: 99px;
   font-size: 2rem;
   color: rgba(43, 43, 43, 0.50);
   z-index: 999;
@@ -491,10 +492,44 @@ button:hover {
   display: block;
 }
 
+.metro-need-card-info:hover {
+  cursor: pointer;
+}
+
 .metro-need-card-bar {
+  position: relative;
   margin-left: 33px;
   width: 34px;
   background-color: white;
   margin-top: 33px;
   height: 117px;
+}
+
+.metro-need-card-bar-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #EC7538;
+  height: 0%;
+}
+
+.metro-need-card-info h4, .metro-need-card-info h5,
+.metro-need-card-info p {
+  font-weight: 300;
+  margin-top: 15px;
+  margin-left: 25px;
+}
+
+.metro-need-card-info h4 {
+  margin-top: 25px;
+  font-size: .9rem;
+}
+
+.metro-need-card-info h5 {
+  font-size: 0.7rem;
+}
+
+.metro-need-card-info p {
+  font-size: 0.8rem;
 }
