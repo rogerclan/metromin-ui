@@ -321,7 +321,7 @@ button:hover {
   margin: 5px;;
 }
 
-.metro-chat-wait {
+.metro-chat-wait, .metro-requests-list-item-empty {
   color: #225575;
   text-align: center;
   margin-top: 1rem;
