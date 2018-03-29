@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NeedCardList from '../components/needs/List';
 import NeedsView from '../components/needs/View';
+import FaceBook from '../components/FaceBook';
 import Api from '../api';
 import Campaign from '../models/Campaign';
 
@@ -10,12 +11,14 @@ export class Needs extends Component {
     this.state = {
       needs: [],
       need: null,
-      donation: false
+      donation: false,
+      showFB: false
     }
 
     this.handleDonateClicked = this.handleDonateClicked.bind(this);
     this.handleHelpClicked = this.handleHelpClicked.bind(this);
     this.handleSelectCard = this.handleSelectCard.bind(this);
+    this.handleCloseFBWin = this.handleCloseFBWin.bind(this);
     this.handleCloseViewClicked = this.handleCloseViewClicked.bind(this);
   }
 
@@ -35,6 +38,10 @@ export class Needs extends Component {
     this.setState({need});
   }
 
+  handleCloseFBWin() {
+    this.setState({showFB: false});
+  }
+
   handleHelpClicked() {
     this.setState({donation: true});
   }
@@ -45,7 +52,7 @@ export class Needs extends Component {
 
   handleDonateClicked(id, name, amount) {
     const me = this;
-    me.setState({donation: false, need: null});
+    me.setState({donation: false, need: null, showFB:true});
     Api.addContribution(id, name, amount).then(() => {
       me.loadCampaigns();
     })
@@ -54,6 +61,7 @@ export class Needs extends Component {
   render() {
     return (
       <div>
+        { this.state.showFB && <FaceBook closeWindow={this.handleCloseFBWin}/>}
         <section className="metro-hero">
           <h2 className="metro-hero__title">People Helping People</h2>
         </section>

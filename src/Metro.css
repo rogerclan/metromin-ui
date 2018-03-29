@@ -271,7 +271,7 @@ button:hover {
   border-radius: 3px;
 }
 
-.metro-chat-box-close-btn {
+.metro-chat-box-close-btn, .metro-fb-window-close-btn {
   position: absolute;
   padding: 5px;
   background-color: #EC7538;
@@ -649,4 +649,49 @@ button:hover {
 
 .metro-need-view.metro-show-donation .metro-need-view-details button{
   visibility: hidden;
+}
+
+.metro-fb-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 170px;
+  width: 300px;
+  margin-left: -150px;
+  margin-top: -85px;
+  border: 2px solid rgba(43, 43, 43, 0.658);
+  border-radius: 3px;
+  z-index: 9999;
+  background-color: rgba(250, 250, 250, 0.8);
+}
+
+.metro-fb-title {
+  color: #1F91C6;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  padding: 15px 7px 25px;
+  text-align: center;
+}
+
+.metro-fb-share-btn {
+  color: white;
+  background-color: #225575;
+  border-color: #225575;
+  position: absolute;
+  width: 170px;
+  bottom: -15px;
+  left: 50%;
+  margin-left: -85px;
+}
+
+.metro-fb-share-btn:hover {
+  background-color: #1F91C6;
+}
+.metro-fb {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.metro-fb .fa.fa-facebook-square {
+  color: #1F91C6;
+  font-size: 60px;
 }
