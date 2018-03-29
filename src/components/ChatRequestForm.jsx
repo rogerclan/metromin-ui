@@ -71,9 +71,9 @@ export class ChatRequestForm extends Component {
         <input className="metro-input" onChange={ev => this.handlePhoneChange(ev.target.value)} value={this.state.phone} type="tel" name="phone" />
         <label className="metro-label">Location</label>
         <input className="metro-input" onChange={ev => this.handleLocationChange(ev.target.value)} value={this.state.location} type="text" name="location" />
-        <label className="metro-label">Request Type</label>
+        <label className="metro-label">Request type</label>
         <CaseTypes change={this.handleCaseTypeChange} value={this.state.caseType} />
-        <label className="metro-label">Your Specific need</label>
+        <label className="metro-label">Your specific need</label>
         <textarea className="metro-textarea" onChange={ev => this.handleNeedChange(ev.target.value)} value={this.state.need} rows="8" name="needs" required></textarea>
         <div className="metro-btn-bar">
           <button className="metro-btn metro-chat__btn" onClick={ev => this.handleStartChat(ev)}>Start Chat</button>
