@@ -16,6 +16,7 @@ export class RequestList extends Component {
   }
 
   componentWillMount() {
+    this.getUserCases();
     this.startPolling();
   }
 
@@ -24,7 +25,8 @@ export class RequestList extends Component {
   }
 
   startPolling() {
-    this.poll = setInterval(() => this.getUserCases(), 3000);
+    const poll = setInterval(() => this.getUserCases(), 3000);
+    this.setState({poll});
   }
 
   getUserCases() {

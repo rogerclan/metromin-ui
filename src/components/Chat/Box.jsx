@@ -23,6 +23,7 @@ export default class ChatBox extends Component {
   }
 
   componentWillMount() {
+    this.getMessages();
     this.startPolling();
   }
 
