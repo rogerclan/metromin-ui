@@ -8,7 +8,7 @@ const ChatGrid = (props) => {
         <ChatBox key={chat.id} userCase={chat} startCampaign={props.startCampaign} user={props.user} closeChat={props.closeChat}/>
       ))
     }
-    return;
+
   }
   return (
     <div className="metro-vol-chat-grid">
